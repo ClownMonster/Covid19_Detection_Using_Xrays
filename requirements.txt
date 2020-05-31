@@ -1,0 +1,7 @@
+tensorflow==2.0.0
+keras
+numpy
+opencv-python
+scikit-learn
+matplotlib
+imutils
