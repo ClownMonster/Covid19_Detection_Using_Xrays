@@ -27,14 +27,9 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
-# agumets parsed
-ag = argparse.ArgumentParser()
-ag.add_argument("-m", "--model",type=str, default="Clowncovid19.model",
-                 help="Path to  output loss/accuracy plot")
-ag.add_argument("-p", "--plot", type=str, default="plot.png",
-                help="Path to  output loss/accuracy plot" )
 
-args = vars(ag.parse_args)
+
+
 
 # Initalizing Learning Rate, Number of Epochs and Batch Size
 LR = 1e-3
