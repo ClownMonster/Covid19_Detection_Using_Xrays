@@ -32,9 +32,9 @@ warnings.filterwarnings('ignore')
 
 
 # Initalizing Learning Rate, Number of Epochs and Batch Size
-LR = 1e-3
+LR = 1e-5 # learning rate changed for better accuracy
 Epochs = 25
-batch_size = 8
+batch_size = 8 # to be made 32 for testing and can be more overfitting
 
 print("[Loading Images]....\n")
 
@@ -71,7 +71,7 @@ print("\n[Spliting Data]....\n")
 x_train, x_test, y_train, y_test = train_test_split( data, labels,
                                                      test_size = 0.20, 
                                                      stratify = labels,
-                                                     random_state = 42)
+                                                  random_state = 42)
 
 # initializing traing data argument object
 
@@ -80,6 +80,14 @@ trainAug = ImageDataGenerator(
     fill_mode = 'nearest'
 )
 
+
+X = np.zeros(shape=(23705,48,48))
+for i in range(len(df1["pixels"])):
+    X[i] = df1["pixels"][i]
+X.dtype
+Output - dtype('float64')
+
+# changing the pixel rate to fill the image
 
 print("\n[Creating CNN Layer For  Model]....\n")
 # loading VGG16 convolution neutral network model
