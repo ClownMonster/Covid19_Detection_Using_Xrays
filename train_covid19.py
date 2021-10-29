@@ -76,12 +76,12 @@ x_train, x_test, y_train, y_test = train_test_split( data, labels,
 # initializing traing data argument object
 
 trainAug = ImageDataGenerator(
-    rotation_range = 15,
+    rotation_range = 40,
     fill_mode = 'nearest'
 )
 
 
-X = np.zeros(shape=(23705,48,48))
+X = np.zeros(shape=(23705,64,64))
 for i in range(len(df1["pixels"])):
     X[i] = df1["pixels"][i]
 X.dtype
