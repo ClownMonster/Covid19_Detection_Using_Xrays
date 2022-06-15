@@ -27,14 +27,19 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
+# agumets parsed
+ag = argparse.ArgumentParser()
+ag.add_argument("-m", "--model",type=str, default="Clowncovid19.model",
+                 help="Path to  output loss/accuracy plot")
+ag.add_argument("-p", "--plot", type=str, default="plot.png",
+                help="Path to  output loss/accuracy plot" )
 
-
-
+args = vars(ag.parse_args)
 
 # Initalizing Learning Rate, Number of Epochs and Batch Size
-LR = 1e-5 # learning rate changed for better accuracy
+LR = 1e-3
 Epochs = 25
-batch_size = 8 # to be made 32 for testing and can be more overfitting
+batch_size = 8
 
 print("[Loading Images]....\n")
 
@@ -71,23 +76,15 @@ print("\n[Spliting Data]....\n")
 x_train, x_test, y_train, y_test = train_test_split( data, labels,
                                                      test_size = 0.20, 
                                                      stratify = labels,
-                                                  random_state = 42)
+                                                     random_state = 42)
 
 # initializing traing data argument object
 
 trainAug = ImageDataGenerator(
-    rotation_range = 40,
+    rotation_range = 15,
     fill_mode = 'nearest'
 )
 
-
-X = np.zeros(shape=(23705,64,64))
-for i in range(len(df1["pixels"])):
-    X[i] = df1["pixels"][i]
-X.dtype
-Output - dtype('float64')
-
-# changing the pixel rate to fill the image
 
 print("\n[Creating CNN Layer For  Model]....\n")
 # loading VGG16 convolution neutral network model
@@ -179,4 +176,4 @@ plt.legend(loc="lower left")
 plt.savefig('plot.png')
 
 print("\n[Saving The Covid Model]....\n")
-clownModel.save('ClownCovid19.model', save_format = 'h5')
+clownModel.save('Covid19.h5')

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <div class="outer-box">
+        <div class="title">Welcome to Covid 19 Detection Using X-rays</div>
+        <div class="form">
+            <!-- {% csrf_token %} -->
+            <form method = 'POST' enctype='multipart/form-data' action = "{% url 'index_page'  %}">
+             <input name = 'img_file' type="file"  />
+             <button type="submit"> Submit Image For Evaluation</button>
+            </form>
+           
+        </div>
+    </div>
+  
+
+
+   <style>
+       html, body{
+            width:100%;
+            height:100%;
+       }
+
+       .outer-box{
+           width:100%;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+
+       }
+
+       .title{
+           width: 95%;
+           height:4rem;
+           background-color: black;
+            color:white;
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            
+       }
+
+       .title > div{
+           display: flex;
+           justify-content: center;
+       }
+
+       .form{
+        top:50%;
+        left:45%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        width:28%;
+        height:20rem;
+        background-color: black;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        
+       }
+
+       .form > form{
+        display: flex;
+        justify-content: center;
+        flex-direction:column;
+        cursor:pointer;
+
+       }
+
+       form > input{
+           width:90%;
+           padding:0.5rem;
+           color:black;
+           margin-bottom: 3rem;
+           background-color: white;
+           border-radius: 10px;
+           display: flex;
+        justify-content: center;
+        font-size: 18px;
+        cursor:pointer;
+           
+
+
+       }
+
+       form > button{
+        width:90%;
+        padding:0.5rem;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        cursor:pointer;
+        border-radius: 10px;
+
+
+       }
+
+   </style>
+</body>
